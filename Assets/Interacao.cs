@@ -9,9 +9,7 @@ public class Interacao : MonoBehaviour
     public GameObject ObjNormal;
     public Transform transformMonstro;
     public Transform transformPlayer;
-    public bool interage;
-    public bool andaMonstro;
-    public float monsterSpeed;
+    public float monsterStartDistance;
 
     public float quantidadeMovimentoMonstro;
     void Start()
@@ -20,51 +18,36 @@ public class Interacao : MonoBehaviour
        transformPlayer = player.GetComponent<Transform>();
     }
 
-    void Update()
-    {
-        if(interage)
-        {
-            if( correParaEsquerda() == true)
-            {
-
-            }else
-            {
-                interage = false;
-            }
-
-        }
-    }
     public void OnTriggerStay(Collider other) 
     {
        if(other.gameObject.tag.Equals("Normal"))
        {
            if(Input.GetKey(KeyCode.E))
            {
-               interage = true;
-               andaMonstro = true;
-               monstro.SetActive(true); 
+               monstro.GetComponent<Transform>().position = new Vector3(
+               transformPlayer.position.x+monsterStartDistance,1,0f);
+               monstro.SetActive(true);
                player.GetComponent<Mover>().enabled = false;
-           }   
-
-       }else
-       {
-           interage = false;
+               Correr pc = player.GetComponent<Correr>();
+               pc.direction = -1;
+               pc.enabled = true;
+               Correr mc = monstro.GetComponent<Correr>();
+               mc.direction = -1;
+               mc.enabled = true;
+           }
        }
-       
-    }
+    }   
 
-        public bool correParaEsquerda()
-    {
-        if(andaMonstro == true)
-        {
-            //anda monstro
-            Vector3 movement = new Vector3(-(quantidadeMovimentoMonstro) * monsterSpeed,0f,0f);
-            transformMonstro.position += movement; 
-
-            //anda player
-            transformPlayer.position += movement;
+    public void OnTriggerEnter(Collider other) {
+        if(other.gameObject.tag.Equals("Estranho")){
+            transformPlayer.position = new Vector3(
+                transformPlayer.position.x+500,
+                transformPlayer.position.y, transformPlayer.position.z);
+            player.GetComponent<Mover>().enabled = false;
+            player.GetComponent<Correr>().enabled = true;
+            monstro.GetComponent<Transform>().position = new Vector3(
+                transformPlayer.position.x-monsterStartDistance,1,0f);
+            monstro.SetActive(true);
         }
-        return andaMonstro;
     }
-   
 }

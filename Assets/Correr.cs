@@ -13,7 +13,9 @@ public class Correr : MonoBehaviour
     void Start()
     {
         tr=GetComponent<Transform>();
-        rb=GetComponent<Rigidbody>();
+        if(tag=="Player"){
+            rb=GetComponent<Rigidbody>();
+        }
         rb.sleepThreshold=0;
     }
 
@@ -24,7 +26,7 @@ public class Correr : MonoBehaviour
     }
 
     public void OnCollisionStay(Collision other) {
-        if(Input.GetAxis("Jump")!=0){
+        if(Input.GetAxis("Jump")!=0&&tag=="Player"){
             rb.velocity=new Vector3(rb.velocity.x, jumpStrength, rb.velocity.y);
         }
     }

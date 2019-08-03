@@ -206,8 +206,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19985891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 600, y: 0, z: 0}
-  m_LocalScale: {x: 300, y: 1, z: 15}
+  m_LocalPosition: {x: 600, y: -49.5, z: 0}
+  m_LocalScale: {x: 300, y: 100, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -229,8 +229,8 @@ MonoBehaviour:
   - {fileID: 1451449529659250799, guid: c8e6552c51d620f408840a76bfb36f65, type: 3}
   - {fileID: 1828088788040858599, guid: 71fc893855118624e8a2ae7fac02bade, type: 3}
   firstX: 550
-  minDistanceBetween: 2
-  maxDistanceBetween: 8
+  minDistanceBetween: 4
+  maxDistanceBetween: 20
   distanceToGenerate: 200
 --- !u!1 &54306152
 GameObject:
@@ -317,8 +317,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54306152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100, y: 0, z: 0}
-  m_LocalScale: {x: 300, y: 1, z: 15}
+  m_LocalPosition: {x: 100, y: -49.5, z: 0}
+  m_LocalScale: {x: 300, y: 100, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -456,7 +456,6 @@ GameObject:
   - component: {fileID: 328068428}
   - component: {fileID: 328068427}
   - component: {fileID: 328068426}
-  - component: {fileID: 328068430}
   m_Layer: 0
   m_Name: Objeto Estranho
   m_TagString: Estranho
@@ -537,21 +536,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &328068430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328068425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 568ab0e4aad55344dbaae92a7b862d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 635013321}
-  monstro: {fileID: 1802850288}
-  monsterStartDistance: 30
 --- !u!1 &355292694
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +550,7 @@ GameObject:
   - component: {fileID: 355292696}
   m_Layer: 0
   m_Name: Endless Estranho Fake
-  m_TagString: Estranho
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -661,7 +645,7 @@ GameObject:
   - component: {fileID: 635013329}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -789,9 +773,7 @@ MonoBehaviour:
   ObjNormal: {fileID: 1212677407}
   transformMonstro: {fileID: 0}
   transformPlayer: {fileID: 0}
-  interage: 0
-  andaMonstro: 0
-  monsterSpeed: 0.3
+  monsterStartDistance: 3
   quantidadeMovimentoMonstro: 1
 --- !u!114 &635013329
 MonoBehaviour:
@@ -800,12 +782,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635013321}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 318d47d9489ee37439372129386dfc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 0.3
+  runSpeed: 0.25
   jumpStrength: 10
   direction: 1
   tr: {fileID: 0}
@@ -1132,6 +1114,7 @@ GameObject:
   - component: {fileID: 1802850291}
   - component: {fileID: 1802850290}
   - component: {fileID: 1802850289}
+  - component: {fileID: 1802850293}
   m_Layer: 0
   m_Name: Monstro
   m_TagString: Untagged
@@ -1211,6 +1194,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1802850293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802850288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318d47d9489ee37439372129386dfc71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 0.25
+  jumpStrength: 0
+  direction: 1
+  tr: {fileID: 0}
+  rb: {fileID: 635013327}
 --- !u!1 &1922695599
 GameObject:
   m_ObjectHideFlags: 0
