@@ -13,13 +13,11 @@ public class GenerateEndlessRunner : MonoBehaviour
     void Start()
     {
         float lastX = firstX;
-        Debug.Log(distanceToGenerate-maxDistanceBetween);
         for(int i=0;lastX<firstX+distanceToGenerate-maxDistanceBetween;i++){
             int choosenJumpableIndex = Random.Range(0, jumpables.Length);
             GameObject choosenJumpable = jumpables[choosenJumpableIndex];
             int choosenJumpableXPosition = (int) Mathf.Ceil(
                 lastX+Random.Range(minDistanceBetween, maxDistanceBetween));
-            Debug.Log(choosenJumpableXPosition);
             Instantiate(choosenJumpable,
                 new Vector3(
                     choosenJumpableXPosition,
