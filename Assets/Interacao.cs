@@ -7,10 +7,15 @@ public class Interacao : MonoBehaviour
     public GameObject player;
     public GameObject monstro;
     public GameObject ObjNormal;
+    public Transform transformMonstro;
+    public Transform transformPlayer;
     public bool interage;
+    public bool andaMonstro;
+    public float monsterSpeed;
     void Start()
     {
-       
+       transformMonstro = monstro.GetComponent<Transform>();
+       transformPlayer = player.GetComponent<Transform>();
     }
 
     void Update()
@@ -19,7 +24,7 @@ public class Interacao : MonoBehaviour
         if(interage)
         {
             Debug.Log("dentro");
-            if( ObjNormal.GetComponent<ObjetoNormal>().correParaEsquerda() == true)
+            if( correParaEsquerda() == true)
             {
                 Debug.Log("To indo");
 
@@ -37,8 +42,9 @@ public class Interacao : MonoBehaviour
            if(Input.GetKey(KeyCode.E))
            {
                interage = true;
+               andaMonstro = true;
                monstro.SetActive(true); 
-               player.GetComponent<Mover>().enabled = false; 
+               player.GetComponent<Mover>().enabled = false;
            }   
 
        }else
@@ -46,6 +52,20 @@ public class Interacao : MonoBehaviour
            interage = false;
        }
        
+    }
+
+        public bool correParaEsquerda()
+    {
+        if(andaMonstro == true)
+        {
+            //anda monstro
+            Vector3 movement = new Vector3(-(0.2f) * monsterSpeed,0f,0f);
+            transformMonstro.position += movement; 
+
+            //anda player
+            transformPlayer.position += movement;
+        }
+        return andaMonstro;
     }
    
 }
