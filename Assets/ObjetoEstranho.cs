@@ -5,7 +5,8 @@ using UnityEngine;
 public class ObjetoEstranho : MonoBehaviour
 {
     public GameObject player;
-    public float startDistance;
+    public GameObject monstro;
+    public float monsterStartDistance;
     Transform translate;
     
     
@@ -20,7 +21,10 @@ public class ObjetoEstranho : MonoBehaviour
             translate.position = new Vector3(
                 translate.position.x+500,
                 translate.position.y, translate.position.z);
-            player.GetComponent<Mover>().speed=0.4f;
+                player.GetComponent<Mover>().enabled = false;
+                player.GetComponent<Correr>().enabled = true;
+                monstro.GetComponent<Transform>().position = new Vector3(translate.position.x+monsterStartDistance,0f,0f);
+                monstro.SetActive(true);
         }
     }
 }
