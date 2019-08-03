@@ -20,13 +20,10 @@ public class Interacao : MonoBehaviour
 
     void Update()
     {
-         Debug.Log(interage);
         if(interage)
         {
-            Debug.Log("dentro");
             if( correParaEsquerda() == true)
             {
-                Debug.Log("To indo");
 
             }else
             {
