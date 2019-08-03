@@ -14,10 +14,15 @@ public class ObjetoNormal : MonoBehaviour
     void Start()
     {
         tr = monstro.GetComponent<Transform>();
-        trPlayer = monstro.GetComponent<Transform>();
+        trPlayer = player.GetComponent<Transform>();
     }
 
     void Update()
+    {
+        
+    }
+
+    public bool correParaEsquerda()
     {
         if(andaMonstro == true)
         {
@@ -28,16 +33,6 @@ public class ObjetoNormal : MonoBehaviour
             //anda player
             trPlayer.position += movement;
         }
-    }
-
-    public void OnTriggerEnter(Collider other) 
-    {
-       if(other.gameObject.name.Equals("Player"))
-       {
-           monstro.SetActive(true);
-           andaMonstro = true;     
-           player.GetComponent<Mover>().enabled = false;     
-       }
-
+        return andaMonstro;
     }
 }
