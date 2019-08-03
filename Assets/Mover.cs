@@ -24,7 +24,7 @@ public class Mover : MonoBehaviour
 
     public void OnCollisionStay(Collision other) {
         if(Input.GetAxis("Jump")!=0){
-            rb.velocity+=new Vector3(0f, jumpStrength, 0f);
+            rb.velocity=new Vector3(rb.velocity.x, jumpStrength, rb.velocity.y);
         }
     }
 }
