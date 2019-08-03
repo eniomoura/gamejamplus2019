@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerEstranho : MonoBehaviour
+public class ObjetoEstranho : MonoBehaviour
 {
     public GameObject player;
     Transform translate;
