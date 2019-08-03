@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  jumpStrength: 10
+  jumpStrength: 5
   tr: {fileID: 0}
   rb: {fileID: 0}
 --- !u!54 &635013327

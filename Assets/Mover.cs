@@ -23,9 +23,7 @@ public class Mover : MonoBehaviour
     }
 
     public void OnCollisionStay(Collision other) {
-        Debug.Log("Collided");
         if(Input.GetAxis("Jump")!=0){
-            Debug.Log("Jumped");
             rb.velocity+=new Vector3(0f, jumpStrength, 0f);
         }
     }
