@@ -12,6 +12,8 @@ public class Interacao : MonoBehaviour
     public bool interage;
     public bool andaMonstro;
     public float monsterSpeed;
+
+    public float quantidadeMovimentoMonstro;
     void Start()
     {
        transformMonstro = monstro.GetComponent<Transform>();
@@ -59,7 +61,7 @@ public class Interacao : MonoBehaviour
         if(andaMonstro == true)
         {
             //anda monstro
-            Vector3 movement = new Vector3(-(0.2f) * monsterSpeed,0f,0f);
+            Vector3 movement = new Vector3(-(quantidadeMovimentoMonstro) * monsterSpeed,0f,0f);
             transformMonstro.position += movement; 
 
             //anda player
