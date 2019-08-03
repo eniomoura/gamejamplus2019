@@ -224,11 +224,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4bc9feeebe3e54d86150fac00406ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpables: []
-  firstX: 0
-  minDistanceBetween: 0
-  maxDistanceBetween: 0
-  distanceToGenerate: 0
+  jumpables:
+  - {fileID: 9087246953368928227, guid: d4e56d210a64e10459bb50b1fa901423, type: 3}
+  - {fileID: 1451449529659250799, guid: c8e6552c51d620f408840a76bfb36f65, type: 3}
+  - {fileID: 1828088788040858599, guid: 71fc893855118624e8a2ae7fac02bade, type: 3}
+  firstX: 550
+  minDistanceBetween: 2
+  maxDistanceBetween: 8
+  distanceToGenerate: 200
 --- !u!1 &54306152
 GameObject:
   m_ObjectHideFlags: 0
