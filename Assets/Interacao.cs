@@ -40,13 +40,16 @@ public class Interacao : MonoBehaviour
 
     public void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag.Equals("Estranho")){
-            transformPlayer.position = new Vector3(
+            Vector3 runnerStartPosition = new Vector3(
                 transformPlayer.position.x+500,
-                transformPlayer.position.y, transformPlayer.position.z);
+                transformPlayer.position.y,
+                transformPlayer.position.z);
+            transformPlayer.position = runnerStartPosition;
             player.GetComponent<Mover>().enabled = false;
             player.GetComponent<Correr>().enabled = true;
             monstro.GetComponent<Transform>().position = new Vector3(
                 transformPlayer.position.x-monsterStartDistance,1,0f);
+            player.GetComponent<Death>().respawnPoint=runnerStartPosition;
             monstro.SetActive(true);
         }
     }

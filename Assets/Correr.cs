@@ -13,7 +13,7 @@ public class Correr : MonoBehaviour
     void Start()
     {
         tr=GetComponent<Transform>();
-        if(tag=="Player"){
+        if(tag.Equals("Player")){
             rb=GetComponent<Rigidbody>();
         }
         rb.sleepThreshold=0;
@@ -23,6 +23,11 @@ public class Correr : MonoBehaviour
     {
         Vector3 movement = new Vector3(runSpeed*direction,0f,0f);
         tr.position += movement;
+        if(name.Equals("Monstro")){
+            GameObject.Find("Shadow").transform.parent = transform;
+            GameObject.Find("Shadow").transform.localPosition = new Vector3(0f,0f,-8);
+            GameObject.Find("Shadow").transform.localScale = new Vector3(350,200,1);
+        }
     }
 
     public void OnCollisionStay(Collision other) {

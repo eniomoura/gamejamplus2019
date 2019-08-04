@@ -5,6 +5,8 @@ using UnityEngine;
 public class GenerateEndlessRunner : MonoBehaviour
 {
     public GameObject[] jumpables;
+    public GameObject lareiraFinal;
+    public Vector3 nextLevelStart;
     public float firstX;
     public float minDistanceBetween;
     public float maxDistanceBetween;
@@ -13,7 +15,7 @@ public class GenerateEndlessRunner : MonoBehaviour
     void Start()
     {
         float lastX = firstX;
-        for(int i=0;lastX<firstX+distanceToGenerate-maxDistanceBetween;i++){
+        for(int i=0;lastX<firstX+distanceToGenerate-maxDistanceBetween-30;i++){
             int choosenJumpableIndex = Random.Range(0, jumpables.Length);
             GameObject choosenJumpable = jumpables[choosenJumpableIndex];
             int choosenJumpableXPosition = (int) Mathf.Ceil(
@@ -26,5 +28,7 @@ public class GenerateEndlessRunner : MonoBehaviour
                 Quaternion.identity);
             lastX = choosenJumpableXPosition;
         }
+        GameObject fh = Instantiate(lareiraFinal, new Vector3(lastX+28,2,1), Quaternion.identity);
+        fh.GetComponent<NextLevel>().nextLevelStart = nextLevelStart;
     }
 }
