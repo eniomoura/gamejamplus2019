@@ -30,9 +30,8 @@ public class Death : MonoBehaviour
             .GetComponent<Transform>()
             .position = new Vector3(transform.position.x-respawnStartDistance,1,0f);
         }else{
-            GameObject.Find("Monstro")
-            .GetComponent<Transform>()
-            .position = new Vector3(transform.position.x+respawnStartDistance,1,0f);
+           GetComponent<Correr>().enabled = false;
+           GetComponent<Mover>().enabled = true;
         }
     }
 }
