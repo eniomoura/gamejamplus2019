@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interacao : MonoBehaviour
-{
+public class Interacao : MonoBehaviour {
     public GameObject player;
     public GameObject monstro;
     public GameObject ObjNormal;
@@ -13,21 +13,17 @@ public class Interacao : MonoBehaviour
     public bool isTeleporting;
 
     public float quantidadeMovimentoMonstro;
-    void Start()
-    {
-       transformMonstro = monstro.GetComponent<Transform>();
-       transformPlayer = player.GetComponent<Transform>();
+    void Start () {
+        transformMonstro = monstro.GetComponent<Transform>();
+        transformPlayer = player.GetComponent<Transform>();
     }
 
-    public void OnTriggerStay(Collider other) 
-    {
-       if(other.gameObject.tag.Equals("Normal")&&GetComponent<Mover>().enabled)
-       {
-            isTeleporting=true;
-            monstro.GetComponent<Transform>().position = new Vector3(
-            transformPlayer.position.x+monsterStartDistance,1,0f);
-            monstro.SetActive(true);
-            GameObject[] lareiras = GameObject.FindGameObjectsWithTag("Respawn");
+    public void OnTriggerStay (Collider other) {
+        if (other.gameObject.tag.Equals ("Normal") && GetComponent<Mover>().enabled) {
+            monstro.GetComponent<Transform>().position = new Vector3 (
+                transformPlayer.position.x + monsterStartDistance, 1, 0f);
+            monstro.SetActive (true);
+            GameObject[] lareiras = GameObject.FindGameObjectsWithTag ("Respawn");
             player.GetComponent<Mover>().enabled = false;
             Correr pc = player.GetComponent<Correr>();
             pc.direction = -1;
@@ -35,31 +31,57 @@ public class Interacao : MonoBehaviour
             Correr mc = monstro.GetComponent<Correr>();
             mc.direction = -1;
             mc.enabled = true;
-       }else if(other.gameObject.tag.Equals("Estranho")&&GetComponent<Mover>().enabled){
-           if(Input.GetKey(KeyCode.E)&&!isTeleporting)
-           {
-            isTeleporting=true;
-            Vector3 runnerStartPosition = new Vector3(
-                transformPlayer.position.x+500,
-                transformPlayer.position.y,
-                transformPlayer.position.z);
-            transformPlayer.position = runnerStartPosition;
-            player.GetComponent<Mover>().enabled = false;
-            Correr pc = player.GetComponent<Correr>();
-            pc.direction = 1;
-            pc.enabled = true;
-            Correr mc = monstro.GetComponent<Correr>();
-            mc.direction = 1;
-            mc.enabled = true;
-            monstro.GetComponent<Transform>().position = new Vector3(
-                transformPlayer.position.x-monsterStartDistance,1,0f);
-            player.GetComponent<Death>().respawnPoint=runnerStartPosition;
-            monstro.SetActive(true);
-           }
+        } else if (other.gameObject.tag.Equals  ("Estranho") && GetComponent<Mover>().enabled) {
+            if (!isTeleporting) {
+                try{
+                    other.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
+                }catch(Exception){}
+                if (Input.GetKey (KeyCode.E)) {
+                    isTeleporting = true;
+                    Vector3 runnerStartPosition = new Vector3 (
+                        transformPlayer.position.x + 500,
+                        transformPlayer.position.y,
+                        transformPlayer.position.z);
+                    transformPlayer.position = runnerStartPosition;
+                    player.GetComponent<Mover>().enabled = false;
+                    Correr pc = player.GetComponent<Correr>();
+                    pc.direction = 1;
+                    pc.enabled = true;
+                    Correr mc = monstro.GetComponent<Correr>();
+                    mc.direction = 1;
+                    mc.enabled = true;
+                    monstro.GetComponent<Transform>().position = new Vector3 (
+                        transformPlayer.position.x - monsterStartDistance, 1, 0f);
+                    player.GetComponent<Death>().respawnPoint = runnerStartPosition;
+                    monstro.SetActive (true);
+                }
+            }
+        } else if (other.gameObject.tag.Equals ("Neutro") && GetComponent<Mover>().enabled) {
+            if (!isTeleporting) {
+                try{
+                    other.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
+                }catch(Exception){}
+                if (Input.GetKey (KeyCode.E)) {
+                    monstro.GetComponent<Transform>().position = new Vector3 (
+                        transformPlayer.position.x + monsterStartDistance, 1, 0f);
+                    monstro.SetActive (true);
+                    GameObject[] lareiras = GameObject.FindGameObjectsWithTag ("Respawn");
+                    player.GetComponent<Mover>().enabled = false;
+                    Correr pc = player.GetComponent<Correr>();
+                    pc.direction = -1;
+                    pc.enabled = true;
+                    Correr mc = monstro.GetComponent<Correr>();
+                    mc.direction = -1;
+                    mc.enabled = true;
+                }
+            }
         }
     }
 
-    public void OnTriggerExit(Collider other) {
-        isTeleporting=false;
+    public void OnTriggerExit (Collider other) {
+        isTeleporting = false;
+        try{
+            other.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
+        }catch(Exception){}
     }
 }

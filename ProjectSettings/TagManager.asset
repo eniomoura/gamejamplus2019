@@ -8,6 +8,7 @@ TagManager:
   - Normal
   - Estranho
   - Unclimbable
+  - Neutro
   layers:
   - Default
   - TransparentFX
