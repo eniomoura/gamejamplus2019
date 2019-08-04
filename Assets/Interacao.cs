@@ -34,12 +34,12 @@ public class Interacao : MonoBehaviour {
         } else if (other.gameObject.tag.Equals  ("Estranho") && GetComponent<Mover>().enabled) {
             if (!isTeleporting) {
                 try{
-                    other.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
+                    other.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
                 }catch(Exception){}
                 if (Input.GetKey (KeyCode.E)) {
                     isTeleporting = true;
                     Vector3 runnerStartPosition = new Vector3 (
-                        transformPlayer.position.x + 500,
+                        transformPlayer.position.x%500+500,
                         transformPlayer.position.y,
                         transformPlayer.position.z);
                     transformPlayer.position = runnerStartPosition;
@@ -59,7 +59,7 @@ public class Interacao : MonoBehaviour {
         } else if (other.gameObject.tag.Equals ("Neutro") && GetComponent<Mover>().enabled) {
             if (!isTeleporting) {
                 try{
-                    other.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
+                    other.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
                 }catch(Exception){}
                 if (Input.GetKey (KeyCode.E)) {
                     monstro.GetComponent<Transform>().position = new Vector3 (
@@ -81,7 +81,7 @@ public class Interacao : MonoBehaviour {
     public void OnTriggerExit (Collider other) {
         isTeleporting = false;
         try{
-            other.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
+            other.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
         }catch(Exception){}
     }
 }

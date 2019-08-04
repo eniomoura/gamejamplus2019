@@ -9,6 +9,7 @@ public class NextLevel : MonoBehaviour
    public void OnTriggerEnter(Collider other) {
        if(other.tag.Equals("Player")){
            GameObject.Find("Player").transform.position=nextLevelStart;
+           GameObject.Find("Player").GetComponent<Death>().respawnPoint = nextLevelStart;
            GameObject.Find("Player").GetComponent<Correr>().enabled = false;
            GameObject.Find("Player").GetComponent<Mover>().enabled = true;
         }

@@ -13,6 +13,8 @@ public class Mover : MonoBehaviour
     public Rigidbody rb;
     public RuntimeAnimatorController walkingAnimator;
     public RuntimeAnimatorController idleAnimator;
+    public RuntimeAnimatorController jumpAnimation;
+    public bool isJumping;
 
     void Start()
     {
@@ -25,15 +27,7 @@ public class Mover : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Input.GetAxis("Horizontal")>0){
-            GetComponent<SpriteRenderer>().flipX = false;
-            GetComponent<Animator>().runtimeAnimatorController = walkingAnimator;
-        }else if(Input.GetAxis("Horizontal")<0){
-            GetComponent<SpriteRenderer>().flipX = true;
-            GetComponent<Animator>().runtimeAnimatorController = walkingAnimator;
-        }else{
-            GetComponent<Animator>().runtimeAnimatorController = idleAnimator;
-        }
+        Animate();
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * speed,0f,0f);
         tr.position += movement;
         shadow.transform.parent = GameObject.Find("Player").transform;
@@ -48,6 +42,33 @@ public class Mover : MonoBehaviour
     public void OnCollisionStay(Collision other) {
         if(Input.GetAxis("Jump")!=0&&tag=="Player"&&!other.gameObject.tag.Equals("Unclimbable")){
             rb.velocity=new Vector3(rb.velocity.x, jumpStrength, rb.velocity.y);
+            isJumping=true;
+        }else{
+            isJumping=false;
+        }
+    }
+
+    void Animate(){
+        if(Input.GetAxis("Horizontal")>0){
+            GetComponent<SpriteRenderer>().flipX = false;
+            if(isJumping){
+                GetComponent<Animator>().runtimeAnimatorController = jumpAnimation;
+            }else{
+                GetComponent<Animator>().runtimeAnimatorController = walkingAnimator;
+            }
+        }else if(Input.GetAxis("Horizontal")<0){
+            GetComponent<SpriteRenderer>().flipX = true;
+            if(isJumping){
+                GetComponent<Animator>().runtimeAnimatorController = jumpAnimation;
+            }else{
+                GetComponent<Animator>().runtimeAnimatorController = walkingAnimator;
+            }
+        }else{
+            if(isJumping){
+                GetComponent<Animator>().runtimeAnimatorController = jumpAnimation;
+            }else{
+                GetComponent<Animator>().runtimeAnimatorController = idleAnimator;
+            }
         }
     }
 }
