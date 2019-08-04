@@ -35,4 +35,11 @@ public class Correr : MonoBehaviour
             rb.velocity=new Vector3(rb.velocity.x, jumpStrength, rb.velocity.y);
         }
     }
+
+    public void OnTriggerEnter(Collider other) {
+        if(other.gameObject.tag.Equals("Respawn")){
+           GetComponent<Mover>().enabled = true;
+           enabled = false;
+        }
+    }
 }
