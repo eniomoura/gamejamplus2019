@@ -31,7 +31,7 @@ public class Correr : MonoBehaviour
     }
 
     public void OnCollisionStay(Collision other) {
-        if(Input.GetAxis("Jump")!=0&&tag=="Player"){
+        if(Input.GetAxis("Jump")!=0&&tag=="Player"&&!other.gameObject.tag.Equals("Unclimbable")){
             rb.velocity=new Vector3(rb.velocity.x, jumpStrength, rb.velocity.y);
         }
     }
