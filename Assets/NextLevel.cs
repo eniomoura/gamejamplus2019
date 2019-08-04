@@ -12,6 +12,7 @@ public class NextLevel : MonoBehaviour
            GameObject.Find("Player").GetComponent<Death>().respawnPoint = nextLevelStart;
            GameObject.Find("Player").GetComponent<Correr>().enabled = false;
            GameObject.Find("Player").GetComponent<Mover>().enabled = true;
+           GameObject.Find("Terrain Endless").GetComponent<GenerateEndlessRunner>().Generate();
         }
    }
 }

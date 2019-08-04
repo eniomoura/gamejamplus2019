@@ -6,6 +6,7 @@ public class GenerateEndlessRunner : MonoBehaviour
 {
     public GameObject[] jumpables;
     public GameObject lareiraFinal;
+    public Vector3[] levelStarts;
     public Vector3 nextLevelStart;
     public Vector3[] levelStarts;
     public int currentLevel;
