@@ -26,12 +26,14 @@ public class Correr : MonoBehaviour
     void FixedUpdate()
     {
 
-        if(direction>0){
-            GetComponent<SpriteRenderer>().flipX = false;
-            GetComponent<Animator>().runtimeAnimatorController = runningAnimator;
-        }else{
-            GetComponent<SpriteRenderer>().flipX = true;
-            GetComponent<Animator>().runtimeAnimatorController = runningAnimator;
+        if(!name.Equals("Monstro")){
+            if(direction>0){
+                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<Animator>().runtimeAnimatorController = runningAnimator;
+            }else{
+                GetComponent<SpriteRenderer>().flipX = true;
+                GetComponent<Animator>().runtimeAnimatorController = runningAnimator;
+            }
         }
         Vector3 movement = new Vector3(runSpeed*direction,0f,0f);
         tr.position += movement;
