@@ -39,7 +39,7 @@ public class Interacao : MonoBehaviour {
                 if (Input.GetKey (KeyCode.E)) {
                     isTeleporting = true;
                     Vector3 runnerStartPosition = new Vector3 (
-                        transformPlayer.position.x + 500,
+                        550,
                         transformPlayer.position.y,
                         transformPlayer.position.z);
                     transformPlayer.position = runnerStartPosition;

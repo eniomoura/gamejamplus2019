@@ -6,13 +6,21 @@ public class GenerateEndlessRunner : MonoBehaviour
 {
     public GameObject[] jumpables;
     public GameObject lareiraFinal;
+    public Vector3[] levelStarts;
     public Vector3 nextLevelStart;
+    public int lastLevel;
     public float firstX;
     public float minDistanceBetween;
     public float maxDistanceBetween;
     public float distanceToGenerate;
 
-    void Start()
+    void Start() {
+        nextLevelStart=levelStarts[0];
+        lastLevel = 0;
+        Generate();    
+    }
+
+    public void Generate()
     {
         float lastX = firstX;
         for(int i=0;lastX<firstX+distanceToGenerate-maxDistanceBetween-30;i++){
@@ -30,5 +38,6 @@ public class GenerateEndlessRunner : MonoBehaviour
         }
         GameObject fh = Instantiate(lareiraFinal, new Vector3(lastX+28,2,1), Quaternion.identity);
         fh.GetComponent<NextLevel>().nextLevelStart = nextLevelStart;
+        nextLevelStart = levelStarts[lastLevel++];
     }
 }

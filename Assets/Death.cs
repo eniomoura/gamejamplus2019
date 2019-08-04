@@ -17,7 +17,7 @@ public class Death : MonoBehaviour
                 GameObject.Destroy(lastLife);
                 lives.Remove(lastLife);
                 Respawn();
-            }else if(lives.Count==0){
+            }else if(lives.Count==1){
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
