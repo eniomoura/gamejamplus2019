@@ -21,7 +21,7 @@ public class Interacao : MonoBehaviour
 
     public void OnTriggerStay(Collider other) 
     {
-       if(other.gameObject.tag.Equals("Normal"))
+       if(other.gameObject.tag.Equals("Normal")&&GetComponent<Mover>().enabled)
        {
             isTeleporting=true;
             monstro.GetComponent<Transform>().position = new Vector3(
@@ -35,7 +35,7 @@ public class Interacao : MonoBehaviour
             Correr mc = monstro.GetComponent<Correr>();
             mc.direction = -1;
             mc.enabled = true;
-       }else if(other.gameObject.tag.Equals("Estranho")){
+       }else if(other.gameObject.tag.Equals("Estranho")&&GetComponent<Mover>().enabled){
            if(Input.GetKey(KeyCode.E)&&!isTeleporting)
            {
             isTeleporting=true;

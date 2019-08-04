@@ -1091,6 +1091,7 @@ MonoBehaviour:
   transformMonstro: {fileID: 0}
   transformPlayer: {fileID: 0}
   monsterStartDistance: 3
+  isTeleporting: 0
   quantidadeMovimentoMonstro: 1
 --- !u!114 &635013329
 MonoBehaviour:
@@ -1471,7 +1472,7 @@ GameObject:
   - component: {fileID: 1212677409}
   - component: {fileID: 1212677408}
   m_Layer: 0
-  m_Name: Objeto Normal
+  m_Name: Objeto Final
   m_TagString: Normal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2229,7 +2230,7 @@ GameObject:
   - component: {fileID: 1922695600}
   - component: {fileID: 1922695601}
   m_Layer: 0
-  m_Name: "Regi\xE3oObjetoNormal"
+  m_Name: "Regi\xE3oObjetoFinal"
   m_TagString: Normal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
