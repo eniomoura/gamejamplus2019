@@ -27,6 +27,7 @@ public class Interacao : MonoBehaviour
                monstro.GetComponent<Transform>().position = new Vector3(
                transformPlayer.position.x+monsterStartDistance,1,0f);
                monstro.SetActive(true);
+               GameObject[] lareiras = GameObject.FindGameObjectsWithTag("Respawn");
                player.GetComponent<Mover>().enabled = false;
                Correr pc = player.GetComponent<Correr>();
                pc.direction = -1;
