@@ -11,6 +11,8 @@ public class Mover : MonoBehaviour
     public GameObject shadow;
     public Transform tr;
     public Rigidbody rb;
+    public RuntimeAnimatorController walkingAnimator;
+    public RuntimeAnimatorController idleAnimator;
 
     void Start()
     {
@@ -23,6 +25,15 @@ public class Mover : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(Input.GetAxis("Horizontal")>0){
+            GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<Animator>().runtimeAnimatorController = walkingAnimator;
+        }else if(Input.GetAxis("Horizontal")<0){
+            GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<Animator>().runtimeAnimatorController = walkingAnimator;
+        }else{
+            GetComponent<Animator>().runtimeAnimatorController = idleAnimator;
+        }
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * speed,0f,0f);
         tr.position += movement;
         shadow.transform.parent = GameObject.Find("Player").transform;
