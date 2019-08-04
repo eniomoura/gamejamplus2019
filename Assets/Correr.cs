@@ -11,6 +11,7 @@ public class Correr : MonoBehaviour
     public Rigidbody rb;
     public RuntimeAnimatorController runningAnimator;
     public RuntimeAnimatorController idleAnimator;
+    public AudioClip runningTheme;
 
     void Start()
     {
@@ -19,10 +20,12 @@ public class Correr : MonoBehaviour
             rb=GetComponent<Rigidbody>();
         }
         rb.sleepThreshold=0;
+        runningTheme = GameObject.Find("Main Camera").GetComponent<Sound>().audioClips[2];
     }
 
     void FixedUpdate()
     {
+
         if(direction>0){
             GetComponent<SpriteRenderer>().flipX = false;
             GetComponent<Animator>().runtimeAnimatorController = runningAnimator;

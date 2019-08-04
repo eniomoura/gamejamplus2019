@@ -15,6 +15,7 @@ public class Mover : MonoBehaviour
     public RuntimeAnimatorController idleAnimator;
     public RuntimeAnimatorController jumpAnimation;
     public bool isJumping;
+    public AudioClip movingTheme;
 
     void Start()
     {
